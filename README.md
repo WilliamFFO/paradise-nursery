@@ -1,5 +1,7 @@
 # Paradise Nursery
 
+🌐 **Demo en vivo:** https://williamffo.github.io/paradise-nursery/
+
 Paradise Nursery es una aplicación de comercio electrónico construida con
 **React** y **Redux Toolkit** que permite a los usuarios explorar un catálogo
 de plantas de interior organizadas por categorías, agregarlas a un carrito de
