@@ -1,65 +1,48 @@
-import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import Navbar from './Navbar.jsx'
+import Footer from './Footer.jsx'
+import Home from './Home.jsx'
 import ProductList from './ProductList.jsx'
 import CartItem from './CartItem.jsx'
+import AboutUs from './AboutUs.jsx'
 import './App.css'
 
+const PAGE_TITLES = {
+  '/': 'Paradise Nursery · Plantas de interior',
+  '/plantas': 'Plantas · Paradise Nursery',
+  '/carrito': 'Carrito · Paradise Nursery',
+  '/sobre-nosotros': 'Sobre nosotros · Paradise Nursery',
+}
+
+/** Sube al inicio de la página y actualiza el título al cambiar de ruta. */
+function RouteEffects() {
+  const { pathname, state } = useLocation()
+
+  useEffect(() => {
+    document.title = PAGE_TITLES[pathname] ?? PAGE_TITLES['/']
+    // Si venimos de una tarjeta de categoría, ProductList hace su propio scroll.
+    if (!state?.category) window.scrollTo(0, 0)
+  }, [pathname, state])
+
+  return null
+}
+
 function App() {
-  // Estado que controla qué página se muestra: 'home' | 'products' | 'cart'
-  const [currentPage, setCurrentPage] = useState('home')
-
-  const handleGetStarted = () => {
-    setCurrentPage('products')
-  }
-
-  const handleHomeClick = () => {
-    setCurrentPage('home')
-  }
-
-  const handleProductsClick = () => {
-    setCurrentPage('products')
-  }
-
-  const handleCartClick = () => {
-    setCurrentPage('cart')
-  }
-
-  const handleContinueShopping = () => {
-    setCurrentPage('products')
-  }
-
-  if (currentPage === 'cart') {
-    return (
-      <CartItem
-        onHomeClick={handleHomeClick}
-        onProductsClick={handleProductsClick}
-        onContinueShopping={handleContinueShopping}
-      />
-    )
-  }
-
-  if (currentPage === 'products') {
-    return (
-      <ProductList
-        onHomeClick={handleHomeClick}
-        onCartClick={handleCartClick}
-      />
-    )
-  }
-
   return (
-    <div className="landing-page">
-      <div className="landing-content">
-        <h1>Paradise Nursery</h1>
-        <h2>Donde las plantas se encuentran con el cuidado</h2>
-        <p>
-          Descubre nuestra colección de plantas de interior, elegidas
-          cuidadosamente para llenar de vida y frescura cada rincón de tu
-          hogar u oficina.
-        </p>
-        <button className="get-started-button" onClick={handleGetStarted}>
-          Comenzar
-        </button>
-      </div>
+    <div className="app-shell">
+      <RouteEffects />
+      <Navbar />
+      <main className="app-main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/plantas" element={<ProductList />} />
+          <Route path="/carrito" element={<CartItem />} />
+          <Route path="/sobre-nosotros" element={<AboutUs />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   )
 }

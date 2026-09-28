@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <g id="leaf">
+      <path d="M0 0 C95 -90 115 -270 0 -420 C-115 -270 -95 -90 0 0 Z" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.16" stroke-width="2"/>
+      <path d="M0 -8 C4 -140 4 -280 0 -405" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" fill="none"/>
+      <path d="M1 -90 L58 -150 M1 -170 L66 -235 M1 -250 L54 -310 M-1 -110 L-58 -170 M-1 -190 L-64 -255 M-1 -270 L-50 -325" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2" fill="none"/>
+    </g>
+  </defs>
+  <g transform="translate(40 960)">
+    <use href="#leaf" transform="rotate(-62) scale(1.15)"/>
+    <use href="#leaf" transform="rotate(-36) scale(1.35)"/>
+    <use href="#leaf" transform="rotate(-10) scale(1.05)"/>
+    <use href="#leaf" transform="rotate(16) scale(0.8)"/>
+  </g>
+  <g transform="translate(1570 -70)">
+    <use href="#leaf" transform="rotate(200) scale(1.2)"/>
+    <use href="#leaf" transform="rotate(226) scale(1.4)"/>
+    <use href="#leaf" transform="rotate(252) scale(1)"/>
+    <use href="#leaf" transform="rotate(176) scale(0.8)"/>
+  </g>
+  <g transform="translate(1540 980)">
+    <use href="#leaf" transform="rotate(-20) scale(0.7)"/>
+    <use href="#leaf" transform="rotate(8) scale(0.55)"/>
+  </g>
+</svg>
